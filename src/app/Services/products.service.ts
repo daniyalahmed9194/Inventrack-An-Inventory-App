@@ -15,13 +15,6 @@ export class ProductService {
     return this.AllProducts;
   }
 
-  //   loadAllProducts() {
-  //     return this.fetchAllProducts(
-  //       'http://localhost:3000/products',
-  //       'Error in loading products'
-  //     ).pipe(tap({ next: (products) => this.products.set(products) }));
-  //   }
-
   loadAllProducts() {
     return this.fetchAllProducts(
       'http://localhost:3000/products',
@@ -31,15 +24,6 @@ export class ProductService {
     );
   }
 
-  //   fetchAllProducts(url: string, errorMsg: string) {
-  //     return this.httpClient.get<{ products: Product[] }>(url).pipe(
-  //       map((resProds) => resProds.products),
-  //       catchError((error) => {
-  //         console.log(error);
-  //         return throwError(() => new Error(errorMsg));
-  //       })
-  //     );
-  //   }
 
   fetchAllProducts(url: string, errorMsg: string) {
     return this.httpClient.get<Product[]>(url).pipe(
@@ -56,7 +40,6 @@ addProduct(product: Omit<Product, 'id'>) {
 
   const newId = Math.max(...currentProducts.map(p => p.id), 0) + 1;
   const newProduct: Product = { ...product, id: newId };
-    const id = newId.toString()
   return this.httpClient.post<Product>('http://localhost:3000/products', newProduct).pipe(
     catchError((error) => {
       console.error(error);
@@ -70,14 +53,6 @@ addProduct(product: Omit<Product, 'id'>) {
 }
 
 
-// addNewUser(newUser: Omit<Product, 'id'>) {
-//     const prevUsers = this.products();
-//     const newId =
-//       prevUsers.length > 0 ? Math.max(...prevUsers.map((u) => u.id)) + 1 : 0;
-
-//     // No need to check for duplicate ID since we're generating it fresh
-//     this.users.set([...prevUsers, { ...newUser, id: newId }]);
-//   }
 
 
   removeProduct(id: number) {

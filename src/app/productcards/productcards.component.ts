@@ -1,4 +1,4 @@
-import { Component, Input, inject, Output, EventEmitter } from '@angular/core';
+import { Component, Input, inject, Output, EventEmitter, DestroyRef } from '@angular/core';
 import { Product } from '../Modals/Product.modal.ts';
 import { ProductService } from '../Services/products.service';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +15,7 @@ export class ProductcardsComponent {
   @Input() isAddModal!: boolean;
   isEditModalOpen: boolean = false;
   private productService = inject(ProductService);
+  private destroyRef = inject(DestroyRef)
   selectedProduct!: Product;
   isAddMode = false;
 
@@ -31,35 +32,36 @@ export class ProductcardsComponent {
     // Clone the current product into a local editable object
     this.editProduct = { ...this.product };
     this.isEditModalOpen = true;
-
   }
 
   closeModal() {
     this.isEditModalOpen = false;
   }
 
- saveChanges(): void {
-  if (this.isAddModal) {
-    const { id, ...newProduct } = this.editProduct // ✅ Strip ID for new items
-    this.productService.addProduct(newProduct)
+  saveChanges(): void {
+    if (this.isAddModal) {
+      const { id, ...newProduct } = this.editProduct; // ✅ Strip ID for new items
+      this.productService.addProduct(newProduct);
 
-    this.productService.addProduct(newProduct as Product).subscribe({
-      next: () => {
-        this.closeModal();
-        this.closeAddModal.emit();
-      },
-      error: (err) => console.error('Add failed', err),
-    });
-  } else {
-    this.productService.updateProducts(this.editProduct, this.editProduct.id).subscribe({
-      next: () => {
-        this.closeModal();
-      },
-      error: (err) => console.error('Update failed', err),
-    });
+      const subscription = this.productService.addProduct(newProduct as Product).subscribe({
+        next: () => {
+          this.closeModal();
+          this.closeAddModal.emit();
+        },
+        error: (err) => console.error('Add failed', err),
+      });
+      this.destroyRef.onDestroy(() => subscription.unsubscribe())
+    } else {
+      this.productService
+        .updateProducts(this.editProduct, this.editProduct.id)
+        .subscribe({
+          next: () => {
+            this.closeModal();
+          },
+          error: (err) => console.error('Update failed', err),
+        });
+          }
   }
-}
-
 
   onDelete() {
     const id = this.editProduct.id;

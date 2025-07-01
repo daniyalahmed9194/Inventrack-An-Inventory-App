@@ -1,25 +1,25 @@
 @if (product) {
-  <div class="user-card">
-    <div class="user-actions">
-      <div class="edit" title="Edit" (click)="onEdit()">
-        <img src="edit.svg" alt="Edit" />
-      </div>
-      <div class="delete" title="Delete" (click)="onDelete()">
-        <img src="delete.svg" alt="Delete" />
-      </div>
+<div class="user-card">
+  <div class="user-actions">
+    <div class="edit" title="Edit" (click)="onEdit()">
+      <img src="edit.svg" alt="Edit" />
     </div>
-
-    <h2 class="user-name">{{ product.name }}</h2>
-    <div class="user-details">
-      <p><strong>Category: </strong>{{ product.category }}</p>
-      <p><strong>Stock: </strong>{{ product.stock }}</p>
-      <p><strong>Minimum Stock: </strong>{{ product.minStock }}</p>
-      <p><strong>Price: </strong>{{ product.price }}</p>
+    <div class="delete" title="Delete" (click)="onDelete()">
+      <img src="delete.svg" alt="Delete" />
     </div>
   </div>
+
+  <h2 class="user-name">{{ product.name }}</h2>
+  <div class="user-details">
+    <p><strong>Category: </strong>{{ product.category }}</p>
+    <p><strong>Stock: </strong>{{ product.stock }}</p>
+    <p><strong>Minimum Stock: </strong>{{ product.minStock }}</p>
+    <p><strong>Price: </strong>{{ product.price }}</p>
+  </div>
+</div>
 }
 <!-- Modal -->
- @if(isEditModalOpen || isAddModal){
+@if(isEditModalOpen || isAddModal){
 <div class="modal-body">
   <label for="name">Name</label>
   <input
@@ -66,8 +66,8 @@
     required
   />
   <div class="modal-footer">
-      <button (click)="saveChanges()">Save</button>
-      <button (click)="closeModal()">Cancel</button>
-    </div>
+    <button (click)="saveChanges()">Save</button>
+    <button (click)="closeModal()">Cancel</button>
+  </div>
 </div>
- }
+}

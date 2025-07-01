@@ -46,16 +46,34 @@
   ],
   "suppliers": [
     {
-      "id": 1,
-      "name": "ElectroGoods Ltd.",
-      "contact": "support@electrogoods.com",
-      "phone": "9876543210"
-    },
-    {
       "id": 2,
       "name": "PaperCo",
       "contact": "hello@paperco.com",
       "phone": "9123456789"
+    },
+    {
+      "id": 3,
+      "name": "abd",
+      "contact": "nahi ",
+      "phone": "000887"
+    },
+    {
+      "id": 4,
+      "name": "new",
+      "contact": "neww",
+      "phone": "adfasf"
+    },
+    {
+      "id": 5,
+      "name": "Abdur Rehman Daniyal",
+      "contact": "03134139194",
+      "phone": "+92 313 4139194"
+    },
+    {
+      "id": 6,
+      "name": "Abdur Rehman Daniyal",
+      "contact": "03134139194",
+      "phone": "+92 313 4139194"
     }
   ],
   "orders": [
