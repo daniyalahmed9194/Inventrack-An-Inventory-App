@@ -1,0 +1,15 @@
+/* You can add global styles to this file, and also import other style files */
+.control-error {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  color: #ffca99;
+  height: 0.5rem;
+  padding: 0.25rem 0 0 0;
+  height: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.control-error p {
+  margin: 0;
+}

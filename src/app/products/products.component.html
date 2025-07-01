@@ -1,0 +1,18 @@
+<div id="user-container">
+ @for (product of products(); track product.id) {
+  <app-productcards
+    [product]="product"
+  />
+  }
+
+    <button (click)="openAddModal()">Add Product</button>
+  @if(isAddModal()){
+  <div class="modal">
+    <app-productcards
+      [isAddModal]="isAddModal()"
+      (closeAddModal)="onCloseAddModal()"
+
+    ></app-productcards>
+  </div>
+  }
+</div>

@@ -1,0 +1,61 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@inventrack.com",
+      "password": "admin123",
+      "name": "Admin User",
+      "lastLogin": "2025-06-26T10:00:00Z"
+    }
+  ],
+  "products": [
+    {
+      "id": 2,
+      "name": "Notebook",
+      "category": "Stationery",
+      "stock": 50,
+      "minStock": 20,
+      "price": 40,
+      "supplierId": 2
+    },
+    {
+      "id": 3,
+      "name": "USB-C Cable",
+      "category": "Electronics",
+      "stock": 8,
+      "minStock": 15,
+      "price": 300,
+      "supplierId": 1
+    }
+  ],
+  "suppliers": [
+    {
+      "id": 1,
+      "name": "ElectroGoods Ltd.",
+      "contact": "support@electrogoods.com",
+      "phone": "9876543210"
+    },
+    {
+      "id": 2,
+      "name": "PaperCo",
+      "contact": "hello@paperco.com",
+      "phone": "9123456789"
+    }
+  ],
+  "orders": [
+    {
+      "id": 1,
+      "productId": 1,
+      "quantity": 20,
+      "date": "2025-06-25T14:30:00Z",
+      "status": "Pending"
+    },
+    {
+      "id": 2,
+      "productId": 3,
+      "quantity": 30,
+      "date": "2025-06-24T16:00:00Z",
+      "status": "Shipped"
+    }
+  ]
+}

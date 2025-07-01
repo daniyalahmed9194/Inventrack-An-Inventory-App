@@ -1,0 +1,69 @@
+@if (product) {
+  <div class="user-card">
+    <div class="user-actions">
+      <div class="edit" title="Edit" (click)="onEdit()">
+        <img src="edit.svg" alt="Edit" />
+      </div>
+      <div class="delete" title="Delete" (click)="onDelete()">
+        <img src="delete.svg" alt="Delete" />
+      </div>
+    </div>
+
+    <h2 class="user-name">{{ product.name }}</h2>
+    <div class="user-details">
+      <p><strong>Category: </strong>{{ product.category }}</p>
+      <p><strong>Stock: </strong>{{ product.stock }}</p>
+      <p><strong>Minimum Stock: </strong>{{ product.minStock }}</p>
+      <p><strong>Price: </strong>{{ product.price }}</p>
+    </div>
+  </div>
+}
+<!-- Modal -->
+ @if(isEditModalOpen || isAddModal){
+<div class="modal-body">
+  <label for="name">Name</label>
+  <input
+    type="text"
+    id="name"
+    name="name"
+    [(ngModel)]="editProduct.name"
+    required
+  />
+
+  <label for="category">Category</label>
+  <input
+    type="text"
+    id="category"
+    name="category"
+    [(ngModel)]="editProduct.category"
+    required
+  />
+
+  <label for="stock">Stock</label>
+  <input
+    type="number"
+    id="stock"
+    name="stock"
+    [(ngModel)]="editProduct.stock"
+    required
+  />
+
+  <label for="minStock">Min Stock</label>
+  <input
+    type="number"
+    id="minStock"
+    name="minStock"
+    [(ngModel)]="editProduct.minStock"
+    required
+  />
+
+  <label for="price">Price</label>
+  <input
+    type="number"
+    id="price"
+    name="price"
+    [(ngModel)]="editProduct.price"
+    required
+  />
+</div>
+ }
