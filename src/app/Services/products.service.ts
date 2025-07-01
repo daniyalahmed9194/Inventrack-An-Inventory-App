@@ -51,14 +51,33 @@ export class ProductService {
     );
   }
 
-  addProduct(product: Product) {
-  return this.httpClient.post<Product>('http://localhost:3000/products', product).pipe(
+addProduct(product: Omit<Product, 'id'>) {
+  const currentProducts = this.getAllProducts()(); // unwrapped signal
+
+  const newId = Math.max(...currentProducts.map(p => p.id), 0) + 1;
+  const newProduct: Product = { ...product, id: newId };
+    const id = newId.toString()
+  return this.httpClient.post<Product>('http://localhost:3000/products', newProduct).pipe(
     catchError((error) => {
       console.error(error);
       return throwError(() => new Error('Failed to add product'));
+    }),
+    tap(() => {
+      // Optionally update the local signal state
+      this.products.set([...currentProducts, newProduct]);
     })
   );
 }
+
+
+// addNewUser(newUser: Omit<Product, 'id'>) {
+//     const prevUsers = this.products();
+//     const newId =
+//       prevUsers.length > 0 ? Math.max(...prevUsers.map((u) => u.id)) + 1 : 0;
+
+//     // No need to check for duplicate ID since we're generating it fresh
+//     this.users.set([...prevUsers, { ...newUser, id: newId }]);
+//   }
 
 
   removeProduct(id: number) {
@@ -76,7 +95,7 @@ export class ProductService {
   updateProducts(updatedProduct: Product, id: number) {
     const newId = id.toString();
     return this.httpClient
-      .post('http://localhost:3000/products' + newId, updatedProduct)
+      .patch('http://localhost:3000/products/' + newId, updatedProduct)
       .pipe(
         catchError((error) => {
           console.log(error);

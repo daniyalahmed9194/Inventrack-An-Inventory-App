@@ -39,28 +39,30 @@ export class ProductcardsComponent {
   }
 
  saveChanges(): void {
-    if (this.isAddMode) {
-      this.productService.addProduct(this.editProduct).subscribe({
-        next: () => {
-          this.closeModal();
-          this.productService.loadAllProducts().subscribe();
-        },
-        error: (err) => console.error('Add failed', err),
-      });
-    } else {
-      this.productService.updateProducts(this.editProduct, this.editProduct.id).subscribe({
-        next: () => {
-          this.closeModal();
-          this.productService.loadAllProducts().subscribe();
-        },
-        error: (err) => console.error('Update failed', err),
-      });
-    }
+  if (this.isAddModal) {
+    const { id, ...newProduct } = this.editProduct // ✅ Strip ID for new items
+    this.productService.addProduct(newProduct)
+
+    this.productService.addProduct(newProduct as Product).subscribe({
+      next: () => {
+        this.closeModal();
+        this.closeAddModal.emit();
+      },
+      error: (err) => console.error('Add failed', err),
+    });
+  } else {
+    this.productService.updateProducts(this.editProduct, this.editProduct.id).subscribe({
+      next: () => {
+        this.closeModal();
+      },
+      error: (err) => console.error('Update failed', err),
+    });
   }
+}
 
 
   onDelete() {
-    const id = 1;
+    const id = this.editProduct.id;
     this.productService.removeProduct(id).subscribe({
       next: () => console.log('product deleted'),
       error: (err) => {

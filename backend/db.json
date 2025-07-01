@@ -15,7 +15,7 @@
       "category": "Stationery",
       "stock": 50,
       "minStock": 20,
-      "price": 40,
+      "price": 44,
       "supplierId": 2
     },
     {
@@ -26,6 +26,22 @@
       "minStock": 15,
       "price": 300,
       "supplierId": 1
+    },
+    {
+      "id": 4,
+      "name": "Notebook",
+      "category": "Stationery",
+      "stock": 12,
+      "minStock": 7,
+      "price": 2
+    },
+    {
+      "id": 5,
+      "name": "MOS(Microsoft Office Specialist)",
+      "category": "mob",
+      "stock": 13,
+      "minStock": 4,
+      "price": 40
     }
   ],
   "suppliers": [

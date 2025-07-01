@@ -65,5 +65,9 @@
     [(ngModel)]="editProduct.price"
     required
   />
+  <div class="modal-footer">
+      <button (click)="saveChanges()">Save</button>
+      <button (click)="closeModal()">Cancel</button>
+    </div>
 </div>
  }
