@@ -63,13 +63,16 @@ export class ProductcardsComponent {
           }
   }
 
-  onDelete() {
-    const id = this.editProduct.id;
-    this.productService.removeProduct(id).subscribe({
-      next: () => console.log('product deleted'),
-      error: (err) => {
-        console.error('not deleted', err);
+onDelete() {
+  if (confirm('Are you sure you want to delete this product?')) {
+    const subscription = this.productService.removeProduct(this.product.id).subscribe({
+      next: () => {
+        console.log('Product deleted successfully');
+        // No need to manually update - signal already updated via tap()
       },
+      error: (err) => console.error('Delete failed:', err)
     });
+    this.destroyRef.onDestroy(() => subscription.unsubscribe());
   }
+}
 }

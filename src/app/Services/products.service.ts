@@ -54,18 +54,18 @@ addProduct(product: Omit<Product, 'id'>) {
 
 
 
-
-  removeProduct(id: number) {
-    const newId = id.toString();
-    return this.httpClient
-      .delete('http://localhost:3000/products/' + newId)
-      .pipe(
-        catchError((error) => {
-          console.log(error);
-          return throwError(() => new Error(error));
-        })
-      );
-  }
+removeProduct(id: number) {
+  return this.httpClient.delete(`http://localhost:3000/products/${id}`).pipe(
+    tap(() => {
+      // Update local state immediately
+      this.products.update(current => current.filter(p => p.id !== id));
+    }),
+    catchError(error => {
+      console.error('Delete failed:', error);
+      return throwError(() => new Error('Failed to delete product'));
+    })
+  );
+}
 
   updateProducts(updatedProduct: Product, id: number) {
     const newId = id.toString();

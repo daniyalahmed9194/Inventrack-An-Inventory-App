@@ -1,11 +1,12 @@
 import { Component, DestroyRef, effect, inject, OnInit, signal } from '@angular/core';
 import { ProductService } from '../Services/products.service';
 import { ProductcardsComponent } from '../productcards/productcards.component';
+import { NavbarComponent } from "../shared/navbar/navbar.component";
 
 
 @Component({
   selector: 'app-products',
-  imports: [ProductcardsComponent],
+  imports: [ProductcardsComponent, NavbarComponent],
   templateUrl: './products.component.html',
   styleUrl: './products.component.css',
 })

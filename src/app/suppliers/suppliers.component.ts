@@ -2,10 +2,11 @@ import { Component, DestroyRef, inject, OnInit, signal } from '@angular/core';
 import { SupplierService } from '../Services/suppliers.service';
 import { Suppliers } from '../Modals/suppliers.modal';
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from "../shared/navbar/navbar.component";
 
 @Component({
   selector: 'app-suppliers',
-  imports: [FormsModule],
+  imports: [FormsModule, NavbarComponent],
   templateUrl: './suppliers.component.html',
   styleUrl: './suppliers.component.css',
 })

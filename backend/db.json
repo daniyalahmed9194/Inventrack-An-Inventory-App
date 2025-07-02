@@ -19,38 +19,31 @@
       "supplierId": 2
     },
     {
-      "id": 3,
-      "name": "USB-C Cable",
-      "category": "Electronics",
-      "stock": 8,
-      "minStock": 15,
-      "price": 300,
-      "supplierId": 1
-    },
-    {
-      "id": 4,
-      "name": "Notebook",
-      "category": "Stationery",
-      "stock": 12,
-      "minStock": 7,
-      "price": 2
-    },
-    {
       "id": 5,
       "name": "MOS(Microsoft Office Specialist)",
       "category": "mob",
       "stock": 13,
       "minStock": 4,
       "price": 40
+    },
+    {
+      "id": 6,
+      "name": "macbook",
+      "category": "laptop",
+      "stock": 12,
+      "minStock": 3,
+      "price": 28
+    },
+    {
+      "id": 7,
+      "name": "book",
+      "category": "Stationery",
+      "stock": 6,
+      "minStock": 19,
+      "price": 48
     }
   ],
   "suppliers": [
-    {
-      "id": 2,
-      "name": "PaperCo",
-      "contact": "hello@paperco.com",
-      "phone": "9123456789"
-    },
     {
       "id": 3,
       "name": "abd",
@@ -61,7 +54,7 @@
       "id": 4,
       "name": "new",
       "contact": "neww",
-      "phone": "adfasf"
+      "phone": "adf"
     },
     {
       "id": 5,
@@ -77,13 +70,6 @@
     }
   ],
   "orders": [
-    {
-      "id": 2,
-      "productId": 3,
-      "quantity": 30,
-      "date": "2025-06-24T16:00:00Z",
-      "status": "Shipped"
-    },
     {
       "id": 3,
       "productId": 5,

@@ -2,11 +2,12 @@ import { Component, effect, signal , inject} from '@angular/core';
 import { Order } from '../Modals/order.modal';
 import { OrderService } from '../Services/orders.service';
 import { DatePipe } from '@angular/common';
+import { NavbarComponent } from "../shared/navbar/navbar.component";
 
 @Component({
   selector: 'app-order',
   standalone: true, 
-  imports: [DatePipe],
+  imports: [DatePipe, NavbarComponent],
   templateUrl: './orders.component.html',
   styleUrls: ['./orders.component.css'],
 })
