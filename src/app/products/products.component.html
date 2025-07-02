@@ -1,4 +1,4 @@
-<div id="user-container">
+<!-- <div id="user-container">
  @for (product of products(); track product.id) {
   <app-productcards
     [product]="product"
@@ -14,5 +14,62 @@
 
     ></app-productcards>
   </div>
+  }
+</div> -->
+
+<div class="products-container">
+  <div class="products-header">
+    <h2 class="products-title">Products Catalog</h2>
+    <div class="products-actions">
+      <button class="btn btn-primary add-product-btn" (click)="openAddModal()">
+        <span class="btn-icon">+</span>
+        Add Product
+      </button>
+    </div>
+  </div>
+
+  <div class="products-content">
+    <div class="products-grid">
+      @for (product of products(); track product.id) {
+        <div class="product-card-wrapper">
+          <app-productcards
+            [product]="product"
+            class="product-card-component"
+          />
+        </div>
+      }
+    </div>
+
+    @if(products().length === 0) {
+      <div class="empty-state">
+        <div class="empty-icon">📦</div>
+        <h3 class="empty-title">No Products Found</h3>
+        <p class="empty-description">Start by adding your first product to the catalog</p>
+        <button class="btn btn-primary empty-add-btn" (click)="openAddModal()">
+          <span class="btn-icon">+</span>
+          Add Your First Product
+        </button>
+      </div>
+    }
+  </div>
+
+  @if(isAddModal()){
+    <div class="modal-overlay" (click)="onCloseAddModal()">
+      <div class="modal-container" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+          <h3 class="modal-title">Add New Product</h3>
+          <button class="modal-close-btn" (click)="onCloseAddModal()">
+            <span class="close-icon">×</span>
+          </button>
+        </div>
+        <div class="modal-content">
+          <app-productcards
+            [isAddModal]="isAddModal()"
+            (closeAddModal)="onCloseAddModal()"
+            class="modal-product-form"
+          />
+        </div>
+      </div>
+    </div>
   }
 </div>

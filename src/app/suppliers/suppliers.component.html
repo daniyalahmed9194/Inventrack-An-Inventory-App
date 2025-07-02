@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
   <button (click)="onAdd()">Add Supplier</button>
 </div>
 
@@ -69,4 +69,133 @@
     <button (click)="onCancel()">Cancel</button>
   </div>
 </div>
-}
+} -->
+
+
+<!-- suppliers.html -->
+<div class="container">
+    <div class="header">
+        <h1>Suppliers Management</h1>
+        <p>Manage your supplier information efficiently</p>
+    </div>
+
+    <div class="add-section">
+        <button class="btn" (click)="onAdd()">
+            <i class="icon">+</i> Add New Supplier
+        </button>
+    </div>
+
+    <!-- Suppliers Table Section -->
+    @if(suppliers() && suppliers().length > 0) {
+        <div class="table-section">
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Supplier Name</th>
+                            <th>Contact Person</th>
+                            <th>Phone Number</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for(supplier of suppliers(); track supplier.id) {
+                            <tr>
+                                <td>{{ supplier.name }}</td>
+                                <td>{{ supplier.contact }}</td>
+                                <td>{{ supplier.phone }}</td>
+                                <td>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-edit" (click)="onEdit(supplier)">
+                                            Edit
+                                        </button>
+                                        <button class="btn btn-delete" (click)="onDelete(supplier)">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    } @else {
+        <!-- Empty State -->
+        <div class="empty-state">
+            <h3>No Suppliers Found</h3>
+            <p>Start by adding your first supplier using the button above.</p>
+        </div>
+    }
+
+    <!-- Modal Section -->
+    @if(isAddModal() || isEditModal()) {
+        <div class="modal-overlay">
+            <div class="modal-body">
+                <h2 class="modal-title">
+                    @if(isEditModal()) {
+                        Edit Supplier
+                    } @else {
+                        Add New Supplier
+                    }
+                </h2>
+
+                @if(isEditModal()) {
+                    <div class="form-group">
+                        <label for="id">Supplier ID</label>
+                        <input type="number" id="id" [(ngModel)]="editSupplier.id" disabled>
+                    </div>
+                }
+
+                <div class="form-group">
+                    <label for="name">Supplier Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        [(ngModel)]="editSupplier.name"
+                        placeholder="Enter supplier name"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="contact">Contact Person</label>
+                    <input
+                        type="text"
+                        id="contact"
+                        name="contact"
+                        [(ngModel)]="editSupplier.contact"
+                        placeholder="Enter contact person name"
+                        required
+                    />
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input
+                        type="text"
+                        id="phone"
+                        name="phone"
+                        [(ngModel)]="editSupplier.phone"
+                        placeholder="Enter phone number"
+                        required
+                    />
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-cancel" (click)="onCancel()">
+                        Cancel
+                    </button>
+                    <button class="btn" (click)="onSave()">
+                        @if(isEditModal()) {
+                            Update Supplier
+                        } @else {
+                            Save Supplier
+                        }
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

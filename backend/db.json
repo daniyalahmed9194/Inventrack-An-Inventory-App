@@ -78,18 +78,39 @@
   ],
   "orders": [
     {
-      "id": 1,
-      "productId": 1,
-      "quantity": 20,
-      "date": "2025-06-25T14:30:00Z",
-      "status": "Pending"
-    },
-    {
       "id": 2,
       "productId": 3,
       "quantity": 30,
       "date": "2025-06-24T16:00:00Z",
       "status": "Shipped"
+    },
+    {
+      "id": 3,
+      "productId": 5,
+      "quantity": 15,
+      "date": "2025-07-01T09:30:00Z",
+      "status": "Processing"
+    },
+    {
+      "id": 4,
+      "productId": 2,
+      "quantity": 50,
+      "date": "2025-06-28T14:15:00Z",
+      "status": "Delivered"
+    },
+    {
+      "id": 5,
+      "productId": 7,
+      "quantity": 22,
+      "date": "2025-07-05T11:45:00Z",
+      "status": "Pending"
+    },
+    {
+      "id": 6,
+      "productId": 1,
+      "quantity": 8,
+      "date": "2025-06-30T16:30:00Z",
+      "status": "Cancelled"
     }
   ]
 }

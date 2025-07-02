@@ -1,0 +1,354 @@
+/* suppliers.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.header {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+    padding: 30px;
+    text-align: center;
+    color: white;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.add-section {
+    padding: 30px;
+    background: linear-gradient(90deg, #f8f9ff, #f0f2ff);
+    border-bottom: 1px solid #e1e5ff;
+}
+
+.btn {
+    background: linear-gradient(135deg, #8e44ad, #9b59b6);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(142, 68, 173, 0.3);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(142, 68, 173, 0.4);
+    background: linear-gradient(135deg, #9b59b6, #8e44ad);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn .icon {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, #3498db, #2980b9);
+    padding: 8px 16px;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.btn-edit:hover {
+    background: linear-gradient(135deg, #2980b9, #3498db);
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+}
+
+.btn-delete {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    padding: 8px 16px;
+    font-size: 14px;
+}
+
+.btn-delete:hover {
+    background: linear-gradient(135deg, #c0392b, #e74c3c);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
+}
+
+.btn-cancel {
+    background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+}
+
+.btn-cancel:hover {
+    background: linear-gradient(135deg, #7f8c8d, #95a5a6);
+    box-shadow: 0 6px 20px rgba(149, 165, 166, 0.4);
+}
+
+.table-section {
+    padding: 30px;
+}
+
+.table-container {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background: linear-gradient(135deg, #6c5ce7, #74b9ff);
+    color: white;
+}
+
+th {
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 14px;
+}
+
+tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+tbody tr:hover {
+    background: linear-gradient(90deg, #f8f9ff, #f0f2ff);
+    transform: scale(1.01);
+}
+
+tbody tr:last-child {
+    border-bottom: none;
+}
+
+td {
+    padding: 18px 15px;
+    color: #555;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.empty-state {
+    text-align: center;
+    padding: 60px 30px;
+    color: #888;
+}
+
+.empty-state h3 {
+    margin-bottom: 15px;
+    color: #6c5ce7;
+    font-size: 1.8rem;
+}
+
+.empty-state p {
+    font-size: 1.1rem;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-body {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-title {
+    margin-bottom: 30px;
+    color: #6c5ce7;
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #6c5ce7;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+}
+
+input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e1e5ff;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    background: #f8f9ff;
+}
+
+input:focus {
+    outline: none;
+    border-color: #6c5ce7;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(108, 92, 231, 0.1);
+}
+
+input:disabled {
+    background: #f0f0f0;
+    color: #999;
+    cursor: not-allowed;
+}
+
+input::placeholder {
+    color: #aaa;
+    font-style: italic;
+}
+
+.modal-footer {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid #e1e5ff;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        border-radius: 10px;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .header p {
+        font-size: 1rem;
+    }
+    
+    .add-section {
+        padding: 20px;
+    }
+    
+    .table-section {
+        padding: 20px;
+    }
+    
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    table {
+        min-width: 600px;
+    }
+    
+    th, td {
+        padding: 12px 8px;
+        font-size: 14px;
+    }
+    
+    .modal-body {
+        margin: 20px;
+        width: calc(100% - 40px);
+        padding: 30px 20px;
+    }
+    
+    .modal-title {
+        font-size: 1.5rem;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .btn-edit, .btn-delete {
+        width: 100%;
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .header {
+        padding: 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.8rem;
+    }
+    
+    .modal-footer {
+        flex-direction: column;
+    }
+    
+    .modal-footer .btn {
+        width: 100%;
+    }
+}

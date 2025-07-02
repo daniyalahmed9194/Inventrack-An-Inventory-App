@@ -1,0 +1,89 @@
+<!-- <table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Date</th>
+      <th>Status</th>
+      <th>Quantity</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(order of orders(); track order.id){
+    <tr >
+      <td>{{ order.id}}</td>
+      <td>{{ getSupplierName(order.supplierId) }}</td>
+      <td>{{ order.date | date: 'mediumDate' }}</td>
+      <td>{{ order.items.length }}</td>
+      <td>
+        {{ order.status }} 
+        <span [ngClass]="getStatusClass(order.status)">
+          {{ order.status }}
+        </span>
+      </td>
+      <td>
+        {{order.quantity}}
+      </td>
+      <td>
+        <button (click)="editOrder(order)">Edit</button>
+        <button (click)="deleteOrder(order.id)">Delete</button>
+      </td>
+    </tr>}
+  </tbody>
+</table> -->
+
+
+<div class="orders-container">
+  <div class="orders-header">
+    <h2 class="orders-title">Orders Management</h2>
+    <div class="orders-actions">
+      <button class="btn btn-primary add-order-btn">
+        <span class="btn-icon">+</span>
+        Add Order
+      </button>
+    </div>
+  </div>
+
+  <div class="orders-content">
+    <div class="table-wrapper">
+      <table class="orders-table">
+        <thead class="table-header">
+          <tr class="header-row">
+            <th class="table-th">#</th>
+            <th class="table-th">Date</th>
+            <th class="table-th">Status</th>
+            <th class="table-th">Quantity</th>
+            <th class="table-th">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="table-body">
+          @for(order of orders(); track order.id){
+          <tr class="table-row">
+            <td class="table-td order-id">{{ order.id}}</td>
+            <td class="table-td order-date">{{ order.date | date: 'mediumDate' }}</td>
+            <td class="table-td order-status">
+              <!-- <span class="status-badge" [ngClass]="'status-' + order.status.toLowerCase()">
+                {{ order.status }}
+              </span> -->
+            </td>
+            <td class="table-td order-quantity">
+              <span class="quantity-badge">{{order.quantity}}</span>
+            </td>
+            <td class="table-td order-actions">
+              <div class="action-buttons">
+                <button class="btn btn-edit" (click)="editOrder(order)">
+                  <span class="btn-icon">✏️</span>
+                  Edit
+                </button>
+                <button class="btn btn-delete" (click)="deleteOrder(order.id)">
+                  <span class="btn-icon">🗑️</span>
+                  Delete
+                </button>
+              </div>
+            </td>
+          </tr>}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
